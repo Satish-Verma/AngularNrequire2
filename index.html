@@ -1,0 +1,100 @@
+<html>
+<head>
+<style type="text/css">
+      ul.container {
+          border: 2px solid #CC0000 ;
+          list-style-type: none ;
+          margin: 0px 0px 0px 0px ;
+          padding: 10px 10px 6px 10px ;
+      }
+      li.item {
+          border: 1px dotted #CC0000 ;
+          margin: 0px 0px 4px 0px ;
+          padding: 10px 10px 10px 10px ;
+      }
+  </style>
+</head>
+<body>
+<hr/>
+<div  ng-controller="myCtrl">
+
+First Name: <input type="text" ng-model="firstName"><br><br>
+Last Name: <input type="text" ng-model="lastName"><br>
+<br>
+<div style="color:'orange'">
+  <h2>Full Name: {{firstName + " " + lastName}}</h2>
+</div>
+
+<hr/>
+<div  ng-controller="loginCntrl">
+
+User Name: <input type="text" ng-model="userName"><br><br>
+Password:  &nbsp;&nbsp;&nbsp;<input type="text" ng-model="password"><br><br>
+<button ng-click="dologin()">Click to Login</button>
+<br>
+
+<div style="color:'orange'">
+  <h2>{{displayMsg}}</h2>
+</div>
+<br>
+</div>
+<hr/>
+<div ng-controller="jsonController">
+  <button ng-click="downloadJson()">Click to Download Json and Showing Below:</button>
+  <br/>
+  <tr>
+    <td>O_ID||<td>
+    <td>First Name||<td>
+    <td>Last Name<td>
+    <td>Age||<td>
+    <td>UserID||<td>
+    <td>Country Code||<td>
+    <td>Testing||<td>
+    <td>Query Status||<td>
+    <td>Title||<td>
+    <td>ReleaseYear||<td>
+    <td>Director||<td>
+    <td>login Details</td>
+  </tr>
+  <div ng-repeat="user in users">
+      <tr>
+        <td>{{user._id}}||<td>
+        <td>{{user.firstName}}||<td>
+        <td>{{user.lastName}}||<td>
+        <td>{{user.age}}||<td>
+        <td>{{user.UserId}}||<td>
+        <td>{{user.CountryCode}}||<td>
+        <td>{{user.test}}||<td>
+        <td>{{user.query.active}}||<td>
+        <td>{{user.title}}||<td>
+        <td>{{user.releaseYear}}||<td>
+        <td>{{user.director}}||<td>
+        <td>({{user.login.mrktCd+","+user.login.langCd+","+user.login.userId+","+user.login.version+","+user.login.devKey+","+user.login.password}})<td>
+      </tr>
+  </div>
+  <br>
+
+  <div ng-controller="AppController">
+  <h1>
+        Compiling Transcluded Content in AngularJS Directives
+    </h1>
+
+    <ul bn-thing>
+        <li ng-repeat="friend in friends track by friend.id">
+
+            {{ friend.name }}
+
+        </li>
+    </ul>
+    {{rating}}
+    <div ng-init="rating = 15"> Use of Ng-init:<br/>
+          Rating is {{rating}} <br/>
+          <div fundoo-rating rating-value="rating"></div>
+    </div>
+  </div>
+
+
+</div>
+  <script data-main="index" src="libs/require.js"></script>
+</body>
+</html>
